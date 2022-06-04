@@ -4,14 +4,17 @@
    font-family: 'Poppins' , sans-serif;
   }
 </style>
-<form action="function validate()" method="POST">
+<form onsubmit="return false;" method="POST" name="logINForm">
   <input type="text" placeholder="Type the code here!" id="code">
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" onclick="validate()">
 </form>
 <script>
   function validate(){
             document.getElementById("code").value;
             if (code == "bzdspke5tzoST4"){
- window.open('contactportal.html'); }
+ window.open('contactportal.html'); 
+   } else {
+     alert("The code you have written is incorrect, You have written" +code);
+   }  
 </script>               
   
