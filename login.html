@@ -1,20 +1,48 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-  *{
-   font-family: 'Poppins' , sans-serif;
-  }
-</style>
-<form onsubmit="return false;" method="POST" name="logINForm">
-  <input type="text" placeholder="Type the code here!" id="code">
-  <input type="submit" value="Submit" onclick="validate()">
+<html>
+<head>
+<title>Javascript Login Form Validation</title>
+<!-- Include CSS File Here -->
+<link rel="stylesheet" href="css/style.css"/>
+<!-- Include JS File Here -->
+<script src="js/login.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="main">
+<h2>Anti-Bot System</h2>
+<form id="form_id" method="post" name="myform">
+<label>User Name :</label>
+<input type="text" name="username" id="username"/>
+<label>Password :</label>
+<input type="password" name="password" id="password"/>
+<input type="button" value="Login" id="submit" onclick="validate()"/>
 </form>
-<script>
-  function validate(){
-            document.getElementById("code").value;
-            if (code == "bzdspke5tzoST4"){
- window.open('contactportal.html'); 
-   } else {
-     alert("The code you have written is incorrect, You have written" +code);
-   }  
-</script>               
-  
+<span><b class="note">Note : </b>Username is Helper & The Password is the code from previous page</b></span>
+</div>
+</div>
+  <script>
+    var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate(){
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+if ( username == "helper" && password == "bzdspke5tzoST4"){
+alert ("Login successfully");
+window.location = "contactportal.html"; // Redirecting to other page.
+return false;
+}
+else{
+attempt --;// Decrementing by one.
+alert("You have left "+attempt+" attempt;");
+// Disabling fields after 3 attempts.
+if( attempt == 0){
+document.getElementById("username").disabled = true;
+document.getElementById("password").disabled = true;
+document.getElementById("submit").disabled = true;
+return false;
+}
+}
+}
+  </script>
+</body>
+</html>
